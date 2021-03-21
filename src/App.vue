@@ -1,17 +1,42 @@
 <template>
   <div id="app">
+    <h2>{{ title }}</h2>
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld :title="title" @addTitle="addTitle($event)"/>
+    <hr>
+    <TitleChanger :title="title" @changeTitle="changeTitle($event)"></TitleChanger>
+    <hr>
+    <CustomTitle :title="title" @customTitle="customTitle($event)"></CustomTitle>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import TitleChanger from './components/TitleChanger.vue'
+import CustomTitle from './components/CustomTitle.vue'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      title: 'Hello World'
+    }
+  },
   components: {
-    HelloWorld
+    HelloWorld,
+    TitleChanger,
+    CustomTitle
+  },
+  methods: {
+    addTitle(value) {
+      this.title = value;
+    },
+    changeTitle(value) {
+      this.title = value;
+    },
+    customTitle(value) {
+      this.title = value;
+    }
   }
 }
 </script>
